@@ -4,7 +4,21 @@
 
 ## Visibility
 
-This repository passed a full-history gitleaks check (official v8.30.0 default rules; 0 findings in history and in the working tree) on 2026-11-26. It contains canned example data only — no real keys, prompts, or tracking. It is intended as a public demo with a live working link on a free Cloudflare Worker.
+This repository is public. It contains canned example data only — no real keys, prompts, or tracking. It is intended as a public demo with a live working link on a free Cloudflare Worker (`workers.dev`).
+
+It passed a clean check with **Gitleaks v8.30.0** using the **official default config**, not this repository's demo rule file. That check is separate from `scripts/run-demo.sh`, which loads `.gitleaks.toml` and is expected to report the one fake seeded token.
+
+Commands and result on 2026-11-26, scanned SHA `69cb260207b0a4b8a39d3d28ef563fa775285271` (`main`, 3 commits):
+
+```bash
+# Official default config:
+# https://raw.githubusercontent.com/gitleaks/gitleaks/v8.30.0/config/gitleaks.toml
+# Passed with --config so this scan does not load the repo's custom demo rules.
+gitleaks git --config gitleaks-default-8.30.0.toml --log-opts=--all
+gitleaks dir --config gitleaks-default-8.30.0.toml
+```
+
+Both commands reported 0 findings (exit 0). The same default-rule commands also reported 0 findings at `161d3866f6a57e4bf3e3211aafce162d4315f3e7` and `560e52b68ff500eabf67c28e9faef722d0ebe92e`.
 
 Live demo URL: not deployed yet. The static page lives in `site/` and is ready for a free Cloudflare Worker deploy (see below).
 

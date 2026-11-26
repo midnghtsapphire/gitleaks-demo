@@ -2,6 +2,12 @@
 
 Append-only. Newest first.
 
+## 2026-11-26 — Record exact clean-check commands
+
+- **Files:** `README.md`, `wrangler.toml`, `CHANGELOG.md`, `LEDGER.md`
+- **What was done:** Re-ran Gitleaks v8.30.0 with the official default config from https://raw.githubusercontent.com/gitleaks/gitleaks/v8.30.0/config/gitleaks.toml (passed with `--config` so the repo's custom demo rules are not loaded). Commands: `gitleaks git --config gitleaks-default-8.30.0.toml --log-opts=--all` and `gitleaks dir --config gitleaks-default-8.30.0.toml`. Scanned SHA `69cb260207b0a4b8a39d3d28ef563fa775285271` (`main`, 3 commits): 0 findings (exit 0) on both commands. Recorded those commands, the SHA, and that this check is separate from `scripts/run-demo.sh` (custom `demo-gitleaks-seed` rule). Added a `wrangler.toml` comment that `workers_dev = true` is intentional for a public workers.dev hosting URL. The Worker was not deployed in this commit.
+- **Decisions:** Keep `workers_dev = true`. Do not treat the `run-demo.sh` custom-rule result as the public clean check.
+
 ## 2026-11-26 — Clean-check notes and Worker static-site config
 
 - **Files:** `README.md`, `site/index.html`, `wrangler.toml`, `CHANGELOG.md`, `LEDGER.md`

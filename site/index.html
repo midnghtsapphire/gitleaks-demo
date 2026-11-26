@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>gitleaks-demo — sample data only</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <p class="banner">DEMO — sample data only. Not a live scan of your code.</p>
+    <h1>Gitleaks demo</h1>
+    <p class="lede">Pick one of the three fixed scenarios. Each one always shows a canned example run. There are no real secrets, and this page does not accept uploads or run Gitleaks in your browser.</p>
+  </header>
+  <div class="choices" role="tablist" aria-label="Canned demo scenarios">
+    <button type="button" id="choice-seeded-finding" aria-pressed="true">Seeded finding</button>
+    <button type="button" id="choice-clean-scan" aria-pressed="false">Clean scan</button>
+    <button type="button" id="choice-allowlisted-path" aria-pressed="false">Allowlisted path</button>
+  </div>
+  <section class="panel" aria-live="polite">
+    <h2 id="result-title">Seeded finding</h2>
+    <p id="result-status" class="status">Loading the canned example…</p>
+    <p id="result-blurb"></p>
+    <pre id="result-json"></pre>
+  </section>
+  <footer>
+    <p>EXAMPLE DATA only. Token format: <code>DEMO_GITLEAKS_TOKEN=gitleaks-demo-seed-…</code>, which is deliberately fake. This page has no tracking, analytics, or affiliate code.</p>
+    <p>Source repo: midnghtsapphire/gitleaks-demo (private until a clean check is complete).</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

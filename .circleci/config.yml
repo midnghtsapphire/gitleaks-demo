@@ -1,0 +1,19 @@
+# CircleCI free-plan job. Passes only when scripts/run-demo.sh detects the
+# seeded EXAMPLE DATA finding. Do not add GitHub-hosted Actions.
+version: 2.1
+
+jobs:
+  demo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          name: Run Gitleaks demo (pass when seeded finding is detected)
+          command: bash scripts/run-demo.sh
+
+workflows:
+  demo:
+    jobs:
+      - demo

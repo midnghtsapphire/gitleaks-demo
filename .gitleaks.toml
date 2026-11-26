@@ -1,0 +1,23 @@
+# gitleaks-demo example rules — not a production secret-scanning policy.
+# This file is the entire rule set for the demo. It does not extend the default
+# gitleaks rules, so the seeded EXAMPLE DATA token is the only pattern we look for.
+
+title = "gitleaks-demo example rules (EXAMPLE DATA)"
+
+[[rules]]
+id = "demo-gitleaks-seed"
+description = "EXAMPLE DATA only: seeded demo token (not a real credential)"
+regex = '''DEMO_GITLEAKS_TOKEN=gitleaks-demo-seed-[A-Za-z0-9-]+'''
+tags = ["example-data", "demo"]
+
+# Narrow path allowlist: only the canned EXAMPLE DATA copies of the finding,
+# not the seeded toy file. Patterns accept a leading directory prefix because
+# `gitleaks detect --no-git` reports absolute paths.
+[[allowlists]]
+description = "Canned example-data and site copies of the seeded finding"
+paths = [
+  '''(?:^|/)example-data/expected-output\.json$''',
+  '''(?:^|/)example-data/scenarios/seeded-finding\.json$''',
+  '''(?:^|/)example-data/gitleaks-allowlist-demo\.toml$''',
+  '''(?:^|/)site/scenarios/seeded-finding\.json$''',
+]

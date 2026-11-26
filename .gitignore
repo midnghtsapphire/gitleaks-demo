@@ -1,0 +1,6 @@
+# Local tool cache (run-demo.sh downloads a pinned gitleaks here)
+.cache/
+/gitleaks
+*.tgz
+.wrangler/
+node_modules/

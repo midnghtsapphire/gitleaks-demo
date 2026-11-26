@@ -1,0 +1,7 @@
+{
+  "exampleData": true,
+  "label": "EXAMPLE DATA \u2014 canned demo output, not a live scan",
+  "scenario": "clean-scan",
+  "note": "A scan of toy/clean/ reports no findings.",
+  "findings": []
+}

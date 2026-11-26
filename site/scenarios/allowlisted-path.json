@@ -1,0 +1,7 @@
+{
+  "exampleData": true,
+  "label": "EXAMPLE DATA \u2014 canned demo output, not a live scan",
+  "scenario": "allowlisted-path",
+  "note": "The seeded toy file is allowlisted narrowly by path, so the result is clean.",
+  "findings": []
+}

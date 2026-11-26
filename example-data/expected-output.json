@@ -1,0 +1,25 @@
+[
+  {
+    "RuleID": "demo-gitleaks-seed",
+    "Description": "EXAMPLE DATA only: seeded demo token (not a real credential)",
+    "StartLine": 5,
+    "EndLine": 5,
+    "StartColumn": 2,
+    "EndColumn": 61,
+    "Match": "DEMO_GITLEAKS_TOKEN=gitleaks-demo-seed-not-a-real-credential",
+    "Secret": "DEMO_GITLEAKS_TOKEN=gitleaks-demo-seed-not-a-real-credential",
+    "File": "toy/config.env.example",
+    "SymlinkFile": "",
+    "Commit": "",
+    "Entropy": 4.570544,
+    "Author": "",
+    "Email": "",
+    "Date": "",
+    "Message": "",
+    "Tags": [
+      "example-data",
+      "demo"
+    ],
+    "Fingerprint": "toy/config.env.example:demo-gitleaks-seed:5"
+  }
+]

@@ -1,0 +1,20 @@
+# EXAMPLE DATA — second scanner config used only for the "allowlisted path" canned scenario.
+# Same rule as the repo root .gitleaks.toml, plus a narrow allowlist of the seeded toy file.
+
+title = "gitleaks-demo allowlisted-path scenario (EXAMPLE DATA)"
+
+[[rules]]
+id = "demo-gitleaks-seed"
+description = "EXAMPLE DATA only: seeded demo token (not a real credential)"
+regex = '''DEMO_GITLEAKS_TOKEN=gitleaks-demo-seed-[A-Za-z0-9-]+'''
+tags = ["example-data", "demo"]
+
+[[allowlists]]
+description = "Narrow path allowlist of the seeded toy file for this canned scenario"
+paths = [
+  '''(?:^|/)toy/config\.env\.example$''',
+  '''(?:^|/)example-data/expected-output\.json$''',
+  '''(?:^|/)example-data/scenarios/seeded-finding\.json$''',
+  '''(?:^|/)example-data/gitleaks-allowlist-demo\.toml$''',
+  '''(?:^|/)site/scenarios/seeded-finding\.json$''',
+]

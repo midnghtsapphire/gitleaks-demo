@@ -1,0 +1,2 @@
+This directory is a clean sample for the "clean scan" canned scenario.
+There is no token, key, password, or credential here. EXAMPLE DATA only.

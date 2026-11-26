@@ -2,6 +2,7 @@
 # No tracking, analytics, or third-party resources.
 # Prepared but not deployed. Verify with: npx wrangler deploy --dry-run
 # When a deploy is approved: npx wrangler deploy (Workers Free plan only).
+# workers_dev is true on purpose: a public workers.dev URL was requested for hosting.
 name = "gitleaks-demo"
 compatibility_date = "2026-11-26"
 workers_dev = true

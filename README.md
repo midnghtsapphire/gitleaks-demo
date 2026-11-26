@@ -4,7 +4,22 @@
 
 ## Visibility
 
-This repository passed a full-history gitleaks check (official v8.30.0 default rules; 0 findings in history and in the working tree) on 2026-11-26. It contains canned example data only — no real keys, prompts, or tracking. It is intended as a public demo with a live working link on a free Cloudflare Worker.
+This repository is public. It contains canned example data only — no real keys, prompts, or tracking. It is intended as a public demo with a live working link on a free Cloudflare Worker (`workers.dev`).
+
+It passed a clean check with **Gitleaks v8.30.0** using the **official default config**, not this repository's demo rule file. That check is separate from `scripts/run-demo.sh`, which loads `.gitleaks.toml` and is expected to report the one fake seeded token.
+
+On 2026-11-26 a fresh clone was checked out at SHA `69cb260207b0a4b8a39d3d28ef563fa775285271` (`main`). From that checkout, with the official default config downloaded first:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/gitleaks/gitleaks/v8.30.0/config/gitleaks.toml \
+  -o gitleaks-default-8.30.0.toml
+# --config is required. Without it, gitleaks loads this repo's .gitleaks.toml demo rules.
+# Do not add --log-opts=--all; that would include other branches, not this SHA's history.
+gitleaks git --config gitleaks-default-8.30.0.toml
+gitleaks dir --config gitleaks-default-8.30.0.toml
+```
+
+`gitleaks-default-8.30.0.toml` is a local download only; it is not committed. Results at `69cb260207b0a4b8a39d3d28ef563fa775285271`: `gitleaks git` reported 0 findings (exit 0; 2 commits scanned in this SHA's history). `gitleaks dir` reported 0 findings (exit 0) on that checkout.
 
 Live demo URL: not deployed yet. The static page lives in `site/` and is ready for a free Cloudflare Worker deploy (see below).
 

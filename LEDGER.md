@@ -2,6 +2,18 @@
 
 Append-only. Newest first.
 
+## 2026-11-26 — Public visibility and single-SHA default-rule scan
+
+- **Files:** `README.md`, `CHANGELOG.md`, `LEDGER.md`
+- **What was done:** Re-ran the official-default-rule check on a fresh clone checked out at `69cb260207b0a4b8a39d3d28ef563fa775285271`. Downloaded `https://raw.githubusercontent.com/gitleaks/gitleaks/v8.30.0/config/gitleaks.toml` to `gitleaks-default-8.30.0.toml` (not committed). Commands: `gitleaks git --config gitleaks-default-8.30.0.toml` (0 findings, exit 0, 2 commits scanned in this SHA's history) and `gitleaks dir --config gitleaks-default-8.30.0.toml` (0 findings, exit 0) on that checkout. Documented the `curl -fsSL ... -o gitleaks-default-8.30.0.toml` download and the required `--config` flag so a fresh checkout does not load `.gitleaks.toml`. Did not use `--log-opts=--all`.
+- **Decisions:** Supersedes the 2026-11-26 decision "Keep the repo private until a later, separate visibility change." The repository went public on 2026-11-26 on Audrey Evans's yes. The earlier line is left in place and should not be used.
+
+## 2026-11-26 — Record exact clean-check commands
+
+- **Files:** `README.md`, `wrangler.toml`, `CHANGELOG.md`, `LEDGER.md`
+- **What was done:** Re-ran Gitleaks v8.30.0 with the official default config from https://raw.githubusercontent.com/gitleaks/gitleaks/v8.30.0/config/gitleaks.toml (passed with `--config` so the repo's custom demo rules are not loaded). Commands: `gitleaks git --config gitleaks-default-8.30.0.toml --log-opts=--all` and `gitleaks dir --config gitleaks-default-8.30.0.toml`. Scanned SHA `69cb260207b0a4b8a39d3d28ef563fa775285271` (`main`, 3 commits): 0 findings (exit 0) on both commands. Recorded those commands, the SHA, and that this check is separate from `scripts/run-demo.sh` (custom `demo-gitleaks-seed` rule). Added a `wrangler.toml` comment that `workers_dev = true` is intentional for a public workers.dev hosting URL. The Worker was not deployed in this commit.
+- **Decisions:** Keep `workers_dev = true`. Do not treat the `run-demo.sh` custom-rule result as the public clean check.
+
 ## 2026-11-26 — Clean-check notes and Worker static-site config
 
 - **Files:** `README.md`, `site/index.html`, `wrangler.toml`, `CHANGELOG.md`, `LEDGER.md`

@@ -4,9 +4,9 @@
 
 ## Visibility
 
-This repository is **private**. The intended end state is a public demo, with a live working link on Cloudflare Pages (free). Visibility changes only after a clean check confirms the repo contains canned example data only — no real keys, prompts, or tracking. Until that check is done, it stays private.
+This repository passed a full-history gitleaks check (official v8.30.0 default rules; 0 findings in history and in the working tree) on 2026-11-26. It contains canned example data only — no real keys, prompts, or tracking. It is intended as a public demo with a live working link on a free Cloudflare Worker.
 
-Live demo URL: not deployed yet. The static page lives in `site/` and is ready for a free Cloudflare Pages deploy (see below).
+Live demo URL: not deployed yet. The static page lives in `site/` and is ready for a free Cloudflare Worker deploy (see below).
 
 ## The flow
 
@@ -41,17 +41,19 @@ The seeded value is `gitleaks-demo-seed-not-a-real-credential`. It does not matc
 
 `.circleci/config.yml` runs the same script. The job passes when the seeded finding is detected and the site copies match. This uses CircleCI only (no GitHub-hosted Actions, no billed Actions minutes). Follow the project only if it costs nothing extra; do not buy credits or a plan for this demo.
 
-## Deploy the static demo page (Cloudflare Pages, free)
+## Deploy the static demo page (Cloudflare Worker, free)
 
-The page is plain HTML, CSS, and JS in `site/`. No tracking, analytics, affiliate code, or third-party scripts.
+The page is plain HTML, CSS, and JS in `site/`. No tracking, analytics, affiliate code, or third-party scripts. `wrangler.toml` is an assets-only Worker config pointing at `site/` (no Worker script). It is prepared but not deployed yet.
 
 ```bash
-PROJECT_NAME=gitleaks-demo
-npx wrangler pages project create "$PROJECT_NAME" --production-branch main
-npx wrangler pages deploy site/ --project-name "$PROJECT_NAME"
+# Dry-run only until a deploy is approved:
+npx wrangler deploy --dry-run
+
+# When a deploy is approved, stay on the Workers Free plan:
+npx wrangler deploy
 ```
 
-Stay on the Cloudflare Free plan. Do not attach a custom domain without a separate yes. Deploying `site/` is allowed while this GitHub repo is still private, because the page holds only canned example data.
+Stay on the Cloudflare Free plan. Do not attach a custom domain without a separate yes. The Worker serves only the canned files in `site/`.
 
 ## License
 

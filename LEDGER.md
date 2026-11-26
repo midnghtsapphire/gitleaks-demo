@@ -2,6 +2,12 @@
 
 Append-only. Newest first.
 
+## 2026-11-26 — Clean-check notes and Worker static-site config
+
+- **Files:** `README.md`, `site/index.html`, `wrangler.toml`, `CHANGELOG.md`, `LEDGER.md`
+- **What was done:** After a full-history gitleaks check on 2026-11-26 (official v8.30.0 default rules, 0 findings in history and in the working tree; `scripts/run-demo.sh` passing), updated the README and the live-page footer so they describe that completed check instead of saying the repo is private until a clean check is complete. Switched `wrangler.toml` to an assets-only free Cloudflare Worker config with `[assets] directory = "./site"` and no Worker script. Ran `npx wrangler deploy --dry-run` only; nothing was deployed. Visibility was not changed.
+- **Decisions:** Keep the repo private until a later, separate visibility change. Hosting, when approved, is a free Worker serving only the canned `site/` files, with no tracking.
+
 ## 2026-11-26 — Initial gitleaks-demo
 
 - **Files:** everything in this repository's initial commit on `main`, including `LICENSE`, `README.md`, `CHANGELOG.md`, `LEDGER.md`, and the root `Library/` folder.

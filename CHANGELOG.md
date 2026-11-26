@@ -2,6 +2,12 @@
 
 Append-only, newest first. Each entry: date, what changed.
 
+## 2026-11-26 — Clarify default-config download and single-SHA scan
+
+- Documented how to download the official Gitleaks v8.30.0 default config with `curl -fsSL https://raw.githubusercontent.com/gitleaks/gitleaks/v8.30.0/config/gitleaks.toml -o gitleaks-default-8.30.0.toml`, and required `--config gitleaks-default-8.30.0.toml` so a fresh checkout does not load this repo's demo `.gitleaks.toml`.
+- Replaced `--log-opts=--all` with a scan of a fresh checkout at `69cb260207b0a4b8a39d3d28ef563fa775285271`: `gitleaks git --config gitleaks-default-8.30.0.toml` (0 findings, exit 0, 2 commits scanned) and `gitleaks dir --config gitleaks-default-8.30.0.toml` (0 findings, exit 0). That check is still separate from `scripts/run-demo.sh`.
+- LEDGER: appended an entry that supersedes the earlier "keep the repo private until a later, separate visibility change" decision. The repository went public on 2026-11-26 with Audrey Evans's yes. The earlier line was left in place.
+
 ## 2026-11-26 — Record exact clean-check commands
 
 - Documented the clean check in the README, CHANGELOG, and LEDGER with the exact commands: Gitleaks v8.30.0, official default config (not this repo's `.gitleaks.toml`), `gitleaks git --log-opts=--all` and `gitleaks dir`. Scanned SHA `69cb260207b0a4b8a39d3d28ef563fa775285271` (`main`): 0 findings in history and in the working tree. This scan is separate from `scripts/run-demo.sh`, which uses the custom demo rule.

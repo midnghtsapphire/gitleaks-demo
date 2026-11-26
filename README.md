@@ -8,17 +8,18 @@ This repository is public. It contains canned example data only — no real keys
 
 It passed a clean check with **Gitleaks v8.30.0** using the **official default config**, not this repository's demo rule file. That check is separate from `scripts/run-demo.sh`, which loads `.gitleaks.toml` and is expected to report the one fake seeded token.
 
-Commands and result on 2026-11-26, scanned SHA `69cb260207b0a4b8a39d3d28ef563fa775285271` (`main`, 3 commits):
+On 2026-11-26 a fresh clone was checked out at SHA `69cb260207b0a4b8a39d3d28ef563fa775285271` (`main`). From that checkout, with the official default config downloaded first:
 
 ```bash
-# Official default config:
-# https://raw.githubusercontent.com/gitleaks/gitleaks/v8.30.0/config/gitleaks.toml
-# Passed with --config so this scan does not load the repo's custom demo rules.
-gitleaks git --config gitleaks-default-8.30.0.toml --log-opts=--all
+curl -fsSL https://raw.githubusercontent.com/gitleaks/gitleaks/v8.30.0/config/gitleaks.toml \
+  -o gitleaks-default-8.30.0.toml
+# --config is required. Without it, gitleaks loads this repo's .gitleaks.toml demo rules.
+# Do not add --log-opts=--all; that would include other branches, not this SHA's history.
+gitleaks git --config gitleaks-default-8.30.0.toml
 gitleaks dir --config gitleaks-default-8.30.0.toml
 ```
 
-Both commands reported 0 findings (exit 0). The same default-rule commands also reported 0 findings at `161d3866f6a57e4bf3e3211aafce162d4315f3e7` and `560e52b68ff500eabf67c28e9faef722d0ebe92e`.
+`gitleaks-default-8.30.0.toml` is a local download only; it is not committed. Results at `69cb260207b0a4b8a39d3d28ef563fa775285271`: `gitleaks git` reported 0 findings (exit 0; 2 commits scanned in this SHA's history). `gitleaks dir` reported 0 findings (exit 0) on that checkout.
 
 Live demo URL: not deployed yet. The static page lives in `site/` and is ready for a free Cloudflare Worker deploy (see below).
 

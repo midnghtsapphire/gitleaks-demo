@@ -1,7 +1,10 @@
-# Cloudflare Pages (free plan). Deploy only the static site/ folder.
-# PROJECT_NAME=gitleaks-demo
-# npx wrangler pages project create "$PROJECT_NAME" --production-branch main
-# npx wrangler pages deploy site/ --project-name "$PROJECT_NAME"
+# Free Cloudflare Worker static-site config. Assets only; no Worker script.
+# No tracking, analytics, or third-party resources.
+# Prepared but not deployed. Verify with: npx wrangler deploy --dry-run
+# When a deploy is approved: npx wrangler deploy (Workers Free plan only).
 name = "gitleaks-demo"
-pages_build_output_dir = "site"
-compatibility_date = "2026-11-21"
+compatibility_date = "2026-11-26"
+workers_dev = true
+
+[assets]
+directory = "./site"
